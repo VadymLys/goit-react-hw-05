@@ -1,16 +1,15 @@
 import { useState, useEffect } from "react";
-import { searchMovies } from "../../api/searchImages";
+import { searchMovies, trendingMovies } from "../../api/searchImages";
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
-  const [query, setQuery] = useState("");
   const [error, setError] = useState(false);
 
   useEffect(() => {
     if (!query) return;
     async function loadData() {
       try {
-        const data = await searchMovies(query);
+        const data = await trendingMovies();
         setMovies(data);
       } catch (error) {
         setError(true);
@@ -19,7 +18,7 @@ const HomePage = () => {
         setError(false);
       }
     }
-    loadData(query);
+    loadData();
   }, []);
 
   return <div>Hello</div>;
