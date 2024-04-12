@@ -1,29 +1,23 @@
 import axios from "axios";
 
-async function searchImages(query, pageNum) {
+async function searchMovies(query) {
   try {
-    const API_KEY = "X0sJ3fvNEVUnxb5PR6m8WyW7rOdzAD8SMCSzxAiJtgY";
-    const params = {
-      client_id: API_KEY,
-      query: query,
-      orientation: "landscape",
-      page: pageNum,
-      per_page: 12,
-    };
+    const API_KEY =
+      "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMTU0N2YwYWRkMzY1MGJhYmQzYmY3NTNiMzAwZTQ2OCIsInN1YiI6IjY2MTZmYTIwODY5ZTc1MDE2MzdmZjczMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.8By5xFouiVFF3ZrlsCziiPRRM3XisiS-kFp8pftW60M";
 
     const response = await axios.get(
-      `https://api.unsplash.com/search/photos/`,
+      `https://api.themoviedb.org/3/trending/movie/day/`,
       {
-        params: params,
         headers: {
-          Authorization: `Client-ID ${API_KEY}`,
+          Authorization: `Bearer ${API_KEY}`,
         },
       }
     );
-    return response.data;
+    return response.data.results;
   } catch (error) {
     console.error("Error fetching images:", error);
-    return error.status;
+    return [];
   }
 }
-export { searchImages };
+
+export { searchMovies };
