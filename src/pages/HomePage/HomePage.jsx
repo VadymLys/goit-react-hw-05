@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { trendingMovies } from "../../api/searchImages";
+import { trendingMovies } from "../../api/searchMovies";
+import MovieList from "../../components/MovieList/MovieList";
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
@@ -20,7 +21,11 @@ const HomePage = () => {
     loadData();
   }, []);
 
-  return <div>Hello</div>;
+  return (
+    <>
+      <MovieList movies={movies} />
+    </>
+  );
 };
 
 export default HomePage;
