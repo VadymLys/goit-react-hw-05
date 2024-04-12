@@ -6,7 +6,6 @@ const HomePage = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    if (!query) return;
     async function loadData() {
       try {
         const data = await trendingMovies();
