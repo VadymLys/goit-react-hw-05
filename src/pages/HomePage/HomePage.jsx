@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { searchMovies, trendingMovies } from "../../api/searchImages";
+import { trendingMovies } from "../../api/searchImages";
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
