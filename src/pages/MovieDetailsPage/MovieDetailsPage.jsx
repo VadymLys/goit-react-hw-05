@@ -58,6 +58,7 @@ const MovieDetailsPage = () => {
               <Link to={`movies/${movieId}/reviews`}>Reviews</Link>
             </li>
           </ul>
+          <Outlet />
         </div>
       )}
     </div>
