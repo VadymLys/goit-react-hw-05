@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 const MovieCast = () => {
   const [cast, setCast] = useState(null);
   const { movieId } = useParams();
+
+  console.log(movieId);
   useEffect(() => {
     async function loadData() {
       try {
