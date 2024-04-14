@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { castReviews } from "../../api/cast-reviews";
 import { useParams } from "react-router-dom";
+import { Cast } from "../../api/cast";
 
 const MovieCast = () => {
   const [cast, setCast] = useState(null);
@@ -10,7 +10,7 @@ const MovieCast = () => {
   useEffect(() => {
     async function loadData() {
       try {
-        const data = await castReviews(movieId);
+        const data = await Cast(movieId);
         setCast(data);
       } catch (error) {
         return error.status;

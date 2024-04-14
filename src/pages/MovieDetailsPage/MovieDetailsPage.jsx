@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { movieDetails } from "../../api/movieDetails";
-import { useParams, Link, Outlet, useLocation } from "react-router-dom";
+import { useParams, Link, Outlet } from "react-router-dom";
+import GoBackBtn from "../../components/GoBackBtn/GoBackBtn";
 
 const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
-  const location = useLocation();
+
   useEffect(() => {
     if (!movieId) return;
     async function loadData() {
@@ -19,21 +20,26 @@ const MovieDetailsPage = () => {
     loadData(movieId);
   }, [movieId]);
 
-  const backLinkHref = location.state?.from ?? "/";
-
   const formatUserScore = (score) => {
     return `${Math.trunc(score * 10)}%`;
   };
 
+  const defaultImg =
+    "<https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg>";
+
   return (
     <div>
-      <Link to={backLinkHref}>Go back</Link>
+      <GoBackBtn />
       {movie && (
         <div>
           <img
-            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+            src={
+              movie.poster_path
+                ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                : defaultImg
+            }
             alt={movie.original_title}
-            width="250"
+            width={250}
           />
 
           <div>

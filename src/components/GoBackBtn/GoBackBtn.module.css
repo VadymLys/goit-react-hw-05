@@ -1,0 +1,16 @@
+.btnBack {
+  text-decoration: none;
+  color: black;
+  margin-left: 15px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.21;
+  letter-spacing: -0.03em;
+  display: flex;
+  gap: 3px;
+}
+
+.btnBack:hover {
+  color: orangered;
+  transition: 300ms linear, color 300ms linear;
+}

@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import "modern-normalize";
 import Navigation from "../Navigation/Navigation";
+import Loader from "../Loader/Loader";
 
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
 const MovieDetailsPage = lazy(() =>
@@ -17,7 +18,7 @@ const MovieReviews = lazy(() => import("../MovieReviews/MovieReviews"));
 const App = () => {
   return (
     <div>
-      <Suspense fallback={<div>loading in progress...</div>}>
+      <Suspense fallback={<Loader />}>
         <Navigation />
         <Routes>
           <Route path="/" element={<HomePage />} />
