@@ -6,7 +6,7 @@ axios.defaults.headers.common["Authorization"] =
 
 async function Cast(movieId) {
   const response = await axios.get(`movie/${movieId}/credits`);
-  return response.data.results;
+  return response.data.cast;
 }
 
 export { Cast };

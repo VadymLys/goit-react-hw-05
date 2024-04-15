@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { movieDetails } from "../../api/movieDetails";
-import { useParams, Link, Outlet } from "react-router-dom";
-import GoBackBtn from "../../components/GoBackBtn/GoBackBtn";
+import { useParams, Link, Outlet, useLocation } from "react-router-dom";
+import css from "../MovieDetailsPage/MovieDetailsPage.module.css";
+import { MdArrowBack } from "react-icons/md";
 
 const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
@@ -24,14 +25,20 @@ const MovieDetailsPage = () => {
     return `${Math.trunc(score * 10)}%`;
   };
 
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? "/movies";
+
   const defaultImg =
     "<https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg>";
 
   return (
     <div>
-      <GoBackBtn />
+      <Link to={backLinkHref} className={css.btnBack}>
+        <MdArrowBack className={css.arrow} />
+        Go back
+      </Link>
       {movie && (
-        <div>
+        <div className={css.container}>
           <img
             src={
               movie.poster_path
@@ -42,26 +49,31 @@ const MovieDetailsPage = () => {
             width={250}
           />
 
-          <div>
-            <h2>{movie.original_title}</h2>
-            <p>User score: {formatUserScore(movie.vote_average)}</p>
-            <p>Overview: {movie.overview}</p>
-            <h2>
-              <span>Genres:</span>
-              {movie.genres.map((movie) => movie.name).join(",")}
+          <div className={css.list}>
+            <h2 className={css.title}>{movie.original_title}</h2>
+            <p className={css.score}>
+              User score: {formatUserScore(movie.vote_average)}
+            </p>
+            <p className={css.genres}>Overview: {movie.overview}</p>
+            <h2 className={css.genresTitle}>
+              Genres: {movie.genres.map((movie) => movie.name).join(", ")}
             </h2>
           </div>
         </div>
       )}
       {movie && (
-        <div>
-          <h4>Adittional Information</h4>
-          <ul>
+        <div className={css.info}>
+          <h4 className={css.titleInfo}>Adittional Information</h4>
+          <ul className={css.listInfo}>
             <li>
-              <Link to={`movies/${movieId}/cast`}>Cast</Link>
+              <Link to={`movies/${movieId}/cast`} className={css.itemInfo}>
+                Cast
+              </Link>
             </li>
             <li>
-              <Link to={`movies/${movieId}/reviews`}>Reviews</Link>
+              <Link to={`movies/${movieId}/reviews`} className={css.itemInfo}>
+                Reviews
+              </Link>
             </li>
           </ul>
           <Outlet />

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { reviews } from "../../api/reviews";
 
 const MovieReviews = () => {
-  const [opinios, setOpinions] = useState(null);
+  const [opinions, setOpinions] = useState([]);
   const { movieId } = useParams();
 
   useEffect(() => {
@@ -18,7 +18,23 @@ const MovieReviews = () => {
     loadData();
   }, [movieId]);
 
-  return <div>MovieReviews</div>;
+  return (
+    <div>
+      <h2>Movie Reviews</h2>
+      {opinions.length > 0 ? (
+        <ul>
+          {opinions.map((opinion) => (
+            <li key={opinion.id}>
+              <p>Author:{opinion.author}</p>
+              <p>{opinion.content}</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>We do not have any reviews for this movie</p>
+      )}
+    </div>
+  );
 };
 
 export default MovieReviews;

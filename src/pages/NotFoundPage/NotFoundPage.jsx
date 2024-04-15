@@ -1,9 +1,10 @@
 import GoBackBtn from "../../components/GoBackBtn/GoBackBtn";
+import css from "../NotFoundPage/NotFoundPage.module.css";
 
 const NotFoundPage = () => {
   return (
-    <div>
-      <h3>Error</h3>
+    <div className={css.container}>
+      <h3 className={css.title}>Page not found</h3>
       <GoBackBtn />
     </div>
   );

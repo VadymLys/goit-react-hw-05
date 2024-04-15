@@ -1,4 +1,5 @@
 .btnBack {
+  margin-top: 5px;
   text-decoration: none;
   color: black;
   margin-left: 15px;
@@ -7,7 +8,14 @@
   line-height: 1.21;
   letter-spacing: -0.03em;
   display: flex;
+  align-items: center;
   gap: 3px;
+}
+
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .btnBack:hover {

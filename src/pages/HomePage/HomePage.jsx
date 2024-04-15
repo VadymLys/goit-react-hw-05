@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import { trendingMovies } from "../../api/trendingMovies";
 import MovieList from "../../components/MovieList/MovieList";
-import toast, { Toaster } from "react-hot-toast";
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     async function loadData() {
@@ -15,7 +14,8 @@ const HomePage = () => {
         setMovies(data);
       } catch (error) {
         setError(true);
-        toast.error("An error occurred while fetching trending movies.");
+        console.error("Error searching movies:", error);
+        setError("An error occurred while searching for movies.");
       } finally {
         setError(false);
       }
@@ -23,14 +23,10 @@ const HomePage = () => {
     loadData();
   }, []);
 
-  if (error) {
-    return toast.error("An error occurred while fetching trending movies.");
-  }
-
   return (
     <>
+      {error && <p>{error}</p>}
       <MovieList movies={movies} />
-      <Toaster position="top-right" />
     </>
   );
 };

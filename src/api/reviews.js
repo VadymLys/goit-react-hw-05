@@ -6,7 +6,7 @@ axios.defaults.headers.common["Authorization"] =
 
 async function reviews(movieId) {
   const response = await axios.get(`movie/${movieId}/reviews`);
-  return response.data;
+  return response.data.results;
 }
 
 export { reviews };
