@@ -30,8 +30,8 @@ const MovieCast = () => {
             <li key={actor.id}>
               <img
                 src={
-                  actor.poster_path
-                    ? `<https://image.tmdb.org/t/w/w500/${actor.poster_path}>`
+                  actor.profile_path
+                    ? `<https://image.tmdb.org/t/w/w500/${actor.profile_path}>`
                     : defaultImg
                 }
                 width={250}
