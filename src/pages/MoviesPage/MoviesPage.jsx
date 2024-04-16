@@ -6,6 +6,7 @@ import css from "../MoviesPage/MoviesPage.module.css";
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [error, setError] = useState(null);
   const query = searchParams.get("query");
   useEffect(() => {
     if (!query) return;
@@ -14,7 +15,8 @@ const MoviesPage = () => {
         const data = await searchMovies(query);
         setMovies(data);
       } catch (error) {
-        return error.status;
+        console.error("Error searching movies:", error);
+        setError("An error occurred while searching for movies.");
       }
     }
     loadData();
@@ -39,6 +41,9 @@ const MoviesPage = () => {
           Search
         </button>
       </form>
+
+      {error && <p className={css.title}>{error}</p>}
+
       <MovieList movies={movies} />
     </div>
   );

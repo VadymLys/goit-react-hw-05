@@ -67,3 +67,15 @@
   color: cornflowerblue;
   transition: 300ms linear, color 300ms linear;
 }
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.21;
+  letter-spacing: -0.03em;
+  color: red;
+}
