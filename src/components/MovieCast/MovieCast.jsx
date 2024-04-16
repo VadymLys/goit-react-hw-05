@@ -28,15 +28,15 @@ const MovieCast = () => {
         <ul>
           {actors.map((actor) => (
             <li key={actor.id}>
-              {actor.profile_path ? (
-                <img
-                  src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
-                  alt={actor.name}
-                  width={130}
-                />
-              ) : (
-                <img src={defaultImg} alt="Default Image" width={130} />
-              )}
+              <img
+                src={
+                  actor.poster_path
+                    ? `<https://image.tmdb.org/t/w/w500/${actor.poster_path}>`
+                    : defaultImg
+                }
+                width={250}
+                alt="poster"
+              />
               <p>{actor.name}</p>
               <p>{actor.character}</p>
             </li>

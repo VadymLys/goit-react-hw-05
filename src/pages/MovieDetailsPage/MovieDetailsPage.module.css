@@ -87,6 +87,6 @@
 
 .itemInfo:hover,
 .itemInfo:active {
-  color: orangered;
+  color: cornflowerblue;
   transition: 300ms linear, color 300ms linear;
 }

@@ -18,11 +18,11 @@
 
 .link:hover {
   color: white;
-  background-color: orangered;
+  background-color: cornflowerblue;
 }
 
 .active {
   color: white;
-  background-color: orangered;
+  background-color: cornflowerblue;
   transition: color 250ms linear;
 }

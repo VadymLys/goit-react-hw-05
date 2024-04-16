@@ -16,6 +16,6 @@
 }
 
 .link:hover {
-  color: orangered;
+  color: cornflowerblue;
   transition: 300ms linear, color 300ms linear;
 }
