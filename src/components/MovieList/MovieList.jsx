@@ -3,7 +3,6 @@ import css from "../MovieList/MovieList.module.css";
 const MovieList = ({ movies }) => {
   const location = useLocation();
 
-  console.log(location);
   return (
     <ul className={css.list}>
       {movies.map((movie) => (

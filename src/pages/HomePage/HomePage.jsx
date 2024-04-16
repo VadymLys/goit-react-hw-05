@@ -10,7 +10,6 @@ const HomePage = () => {
     async function loadData() {
       try {
         const data = await trendingMovies();
-        console.log(data);
         setMovies(data);
       } catch (error) {
         setError(true);
