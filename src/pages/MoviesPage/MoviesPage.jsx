@@ -42,7 +42,7 @@ const MoviesPage = () => {
         </button>
       </form>
 
-      {error && <p className={css.title}>{error}</p>}
+      {error && <p className={css.error}>{error}</p>}
 
       <MovieList movies={movies} />
     </div>

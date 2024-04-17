@@ -7,6 +7,7 @@
   font-weight: 600;
   line-height: 1.21;
   letter-spacing: -0.03em;
+  color: cornflowerblue;
 }
 
 .input {
@@ -68,7 +69,7 @@
   transition: 300ms linear, color 300ms linear;
 }
 
-.title {
+.error {
   display: flex;
   align-items: center;
   justify-content: center;
